@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ChatFlow</string>
+    <string name="tagline">Real-Time Messaging Platform</string>
+    <string name="version_label">Version 1.0</string>
+</resources>

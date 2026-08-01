@@ -1,0 +1,132 @@
+# ChatFlow - Firebase Setup Instructions
+
+## IMPORTANT: Firebase Configuration Required
+
+This app requires Firebase to function. Follow these steps to set up Firebase:
+
+### 1. Create Firebase Project
+1. Go to https://console.firebase.google.com
+2. Click "Add project"
+3. Enter project name: "ChatFlow"
+4. Follow the setup wizard (you can disable Google Analytics for now)
+5. Click "Create project"
+
+### 2. Register Android App
+1. In Firebase Console, click the Android icon
+2. Package name: `com.chatflow.app`
+3. App nickname: `ChatFlow` (optional)
+4. Debug signing certificate SHA-1: Run this command in your project directory:
+   ```
+   keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+   ```
+5. Copy the SHA-1 fingerprint and paste it in Firebase Console
+6. Click "Register app"
+
+### 3. Download google-services.json
+1. Download the `google-services.json` file from Firebase Console
+2. Place it in: `app/google-services.json`
+3. The file should already be present (placeholder), replace it with your actual file
+
+### 4. Enable Firebase Services
+
+#### Authentication
+1. Go to Build > Authentication in Firebase Console
+2. Click "Get Started"
+3. Enable "Email/Password" sign-in provider
+4. Enable "Google" sign-in provider (requires OAuth consent screen setup)
+
+#### Firestore Database
+1. Go to Build > Firestore Database
+2. Click "Create database"
+3. Choose a location (closest to your users)
+4. Start in "Test mode" (allows read/write access for 30 days)
+5. After testing, apply the security rules from `firestore.rules` file
+
+#### Cloud Storage
+1. Go to Build > Storage
+2. Click "Get Started"
+3. Choose a location (same as Firestore)
+4. Start in "Test mode"
+5. Apply security rules after testing
+
+#### Cloud Messaging (FCM)
+1. Go to Build > Cloud Messaging
+2. Click "Get Started"
+3. Follow the setup wizard
+4. Server key will be generated automatically
+
+#### Crashlytics
+1. Go to Build > Crashlytics
+2. Click "Set up Crashlytics"
+3. Follow the setup wizard
+
+#### Analytics
+1. Go to Build > Analytics
+2. Should be enabled by default
+
+### 5. Google Sign-In Setup (Optional)
+1. Go to Google Cloud Console: https://console.cloud.google.com
+2. Select your Firebase project
+3. Go to APIs & Services > Credentials
+4. Create OAuth 2.0 credentials if needed
+5. Configure OAuth consent screen
+6. Add your SHA-1 fingerprint from step 2.4
+
+### 6. Apply Security Rules
+
+#### Firestore Rules
+Copy the contents of `firestore.rules` and apply them in:
+Firebase Console > Build > Firestore Database > Rules
+
+#### Storage Rules
+Apply these storage rules in Firebase Console:
+```
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /users/{userId}/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    match /chats/{chatId}/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+
+### 7. Test the Configuration
+1. Build and run the app
+2. Try to register a new user
+3. Verify user appears in Firestore > Authentication
+4. Verify user document appears in Firestore > Database > users collection
+
+### 8. Production Setup
+Before going to production:
+1. Change Firestore from Test mode to Production mode
+2. Apply strict security rules
+3. Enable App Check for additional security
+4. Set up proper index for Firestore queries
+5. Configure Firebase performance monitoring
+
+### Required API Keys
+No additional API keys are needed - Firebase handles everything through `google-services.json`
+
+### Troubleshooting
+- If build fails: Ensure `google-services.json` is in the correct location
+- If authentication fails: Check that Email/Password provider is enabled
+- If Firestore fails: Check database rules and region
+- If notifications don't work: Check FCM configuration and device token registration
+
+### Support
+For Firebase-specific issues: https://firebase.google.com/support
+For app-specific issues: Check the project documentation
+
+---
+
+## File Locations Reference
+- google-services.json: `app/google-services.json`
+- Firestore rules: `firestore.rules` (apply in Firebase Console)
+- Package name: `com.chatflow.app`
+- Application class: `com.chatflow.app.ChatFlowApplication`
