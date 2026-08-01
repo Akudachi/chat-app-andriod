@@ -12,20 +12,14 @@
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M68,38C55.85,38 46,46.95 46,58C46,63.2 48.6,67.9 52.8,71.3L50,82L61.6,77.6C64.2,78.3 66.9,78.7 68,78.7C80.15,78.7 90,69.75 90,58.7C90,47.65 80.15,38 68,38Z" />
-    <!-- Dots on foreground bubble -->
-    <circle
+    <!-- Dots on foreground bubble as paths -->
+    <path
         android:fillColor="#1A73E8"
-        android:cx="62"
-        android:cy="57"
-        android:r="2.5" />
-    <circle
+        android:pathData="M62,57m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+    <path
         android:fillColor="#1A73E8"
-        android:cx="68"
-        android:cy="57"
-        android:r="2.5" />
-    <circle
+        android:pathData="M68,57m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+    <path
         android:fillColor="#1A73E8"
-        android:cx="74"
-        android:cy="57"
-        android:r="2.5" />
+        android:pathData="M74,57m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
 </vector>
