@@ -43,7 +43,7 @@ class HomeViewModel @Inject constructor(
             if (userResult.isSuccess && userResult.getOrNull() != null) {
                 val user = userResult.getOrNull()!!
                 _currentUser.value = user
-                loadChats(user.userId)
+                loadChats(user.id)
             } else {
                 _isLoading.value = false
                 _errorMessage.value = "Failed to load user data"
@@ -71,7 +71,7 @@ class HomeViewModel @Inject constructor(
 
     fun archiveChat(chatId: String) {
         viewModelScope.launch {
-            val userId = _currentUser.value?.userId ?: return@launch
+            val userId = _currentUser.value?.id ?: return@launch
             val result = chatRepository.archiveChat(chatId, userId)
             if (result.isFailure) {
                 _errorMessage.value = result.exceptionOrNull()?.message ?: "Failed to archive chat"

@@ -18,7 +18,7 @@ object Constants {
     const val FIELD_NAME = "name"
     const val FIELD_EMAIL = "email"
     const val FIELD_PHOTO_URL = "photoUrl"
-    const val FIELD_STATUS = "status"
+    const val FIELD_USER_STATUS = "status"
     const val FIELD_PHONE_NUMBER = "phoneNumber"
     const val FIELD_IS_ONLINE = "isOnline"
     const val FIELD_LAST_SEEN = "lastSeen"

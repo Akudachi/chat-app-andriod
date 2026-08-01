@@ -69,7 +69,7 @@ class NewChatViewModel @Inject constructor(
             if (currentUserResult.isSuccess && currentUserResult.getOrNull() != null) {
                 val currentUser = currentUserResult.getOrNull()!!
                 val participants = mapOf(
-                    currentUser.userId to true,
+                    currentUser.id to true,
                     participantId to true
                 )
                 val result = chatRepository.createChat(participants)

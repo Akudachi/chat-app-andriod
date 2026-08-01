@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -28,7 +28,7 @@ class StorageRepositoryImpl @Inject constructor(
             emit(0f)
 
             val file = File(uri)
-            val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+            val requestFile = file.toRequestBody("image/*".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
 
             val token = authRepository.getBearerToken()
@@ -50,7 +50,7 @@ class StorageRepositoryImpl @Inject constructor(
             emit(0f)
 
             val file = File(uri)
-            val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+            val requestFile = file.toRequestBody("image/*".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
 
             val token = authRepository.getBearerToken()
@@ -81,7 +81,7 @@ class StorageRepositoryImpl @Inject constructor(
             emit(0f)
 
             val file = File(uri)
-            val requestFile = file.asRequestBody("audio/*".toMediaTypeOrNull())
+            val requestFile = file.toRequestBody("audio/*".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("voice", file.name, requestFile)
 
             val durationPart = "0".toRequestBody("text/plain".toMediaTypeOrNull())

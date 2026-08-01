@@ -64,7 +64,7 @@ class ChatViewModel @Inject constructor(
             val currentUser = _currentUser.value ?: return@launch
             val message = Message(
                 messageId = "",
-                senderId = currentUser.userId,
+                senderId = currentUser.id,
                 text = text,
                 type = MessageType.TEXT,
                 mediaUrl = null,
@@ -85,7 +85,7 @@ class ChatViewModel @Inject constructor(
                 chatRepository.updateLastMessage(
                     chatId,
                     text,
-                    currentUser.userId,
+                    currentUser.id,
                     System.currentTimeMillis()
                 )
             } else {
@@ -97,15 +97,15 @@ class ChatViewModel @Inject constructor(
     fun markAsRead(chatId: String) {
         viewModelScope.launch {
             val currentUser = _currentUser.value ?: return@launch
-            messageRepository.markMessageAsRead(chatId, "", currentUser.userId)
-            chatRepository.markAsRead(chatId, currentUser.userId)
+            messageRepository.markMessageAsRead(chatId, "", currentUser.id)
+            chatRepository.markAsRead(chatId, currentUser.id)
         }
     }
 
     fun updateTypingStatus(chatId: String, isTyping: Boolean) {
         viewModelScope.launch {
             val currentUser = _currentUser.value ?: return@launch
-            chatRepository.updateTypingStatus(chatId, currentUser.userId, isTyping)
+            chatRepository.updateTypingStatus(chatId, currentUser.id, isTyping)
         }
     }
 

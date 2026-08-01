@@ -1,6 +1,7 @@
 package com.chatflow.app.ui.components
 
 import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.StartOffset
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
@@ -29,7 +30,7 @@ fun TypingAnimation(
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 600),
             repeatMode = RepeatMode.Reverse,
-            initialStartOffset = 0
+            initialStartOffset = StartOffset(0)
         ),
         label = "dot1_scale"
     )
@@ -40,7 +41,7 @@ fun TypingAnimation(
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 600),
             repeatMode = RepeatMode.Reverse,
-            initialStartOffset = 200
+            initialStartOffset = StartOffset(200)
         ),
         label = "dot2_scale"
     )
@@ -51,7 +52,7 @@ fun TypingAnimation(
         animationSpec = infiniteRepeatable(
             animation = tween(durationMillis = 600),
             repeatMode = RepeatMode.Reverse,
-            initialStartOffset = 400
+            initialStartOffset = StartOffset(400)
         ),
         label = "dot3_scale"
     )

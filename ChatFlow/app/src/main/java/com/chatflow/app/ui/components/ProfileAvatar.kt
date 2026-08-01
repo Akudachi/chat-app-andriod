@@ -35,9 +35,8 @@ fun ProfileAvatar(
                 modifier = Modifier
                     .size(size.dp)
                     .clip(AvatarShape),
-                error = {
-                    DefaultAvatar(name = name, size = size)
-                }
+                placeholder = null,
+                error = null
             )
         } else {
             DefaultAvatar(name = name, size = size)
