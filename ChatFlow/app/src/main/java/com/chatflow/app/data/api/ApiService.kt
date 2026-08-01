@@ -169,8 +169,7 @@ data class UploadResponse(
 
 // Retrofit instance
 object RetrofitClient {
-    private const val BASE_URL = "http://10.0.2.2:5000/api/" // For emulator
-    // For real device, use your computer's IP: "http://YOUR_IP:5000/api/"
+    private const val BASE_URL = "https://chat-app-andriod.onrender.com/api/" // Deployed backend
 
     private val gson: Gson = GsonBuilder()
         .setLenient()
