@@ -28,7 +28,7 @@ class StorageRepositoryImpl @Inject constructor(
             emit(0f)
 
             val file = File(uri)
-            val requestFile = file.toRequestBody("image/*".toMediaTypeOrNull())
+            val requestFile = file.readBytes().toRequestBody("image/*".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
 
             val token = authRepository.getBearerToken()
@@ -50,7 +50,7 @@ class StorageRepositoryImpl @Inject constructor(
             emit(0f)
 
             val file = File(uri)
-            val requestFile = file.toRequestBody("image/*".toMediaTypeOrNull())
+            val requestFile = file.readBytes().toRequestBody("image/*".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("image", file.name, requestFile)
 
             val token = authRepository.getBearerToken()
@@ -81,17 +81,17 @@ class StorageRepositoryImpl @Inject constructor(
             emit(0f)
 
             val file = File(uri)
-            val requestFile = file.toRequestBody("audio/*".toMediaTypeOrNull())
+            val requestFile = file.readBytes().toRequestBody("audio/*".toMediaTypeOrNull())
             val body = MultipartBody.Part.createFormData("voice", file.name, requestFile)
 
-            val durationPart = "0".toRequestBody("text/plain".toMediaTypeOrNull())
+            val durationFile = "0".toRequestBody("text/plain".toMediaTypeOrNull())
 
             val token = authRepository.getBearerToken()
             if (token == null) {
                 throw Exception("Not authenticated")
             }
 
-            val response = apiService.uploadVoice(token, body, durationPart)
+            val response = apiService.uploadVoice(token, body, durationFile)
             emit(1f)
         }
     }

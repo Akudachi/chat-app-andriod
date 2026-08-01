@@ -163,11 +163,10 @@ private fun MessageBubble(
     isCurrentUser: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val bubbleColor = if (isCurrentUser) {
-        if (isDark) ChatBubbleSentLight else ChatBubbleSentDark
+        ChatBubbleSentLight
     } else {
-        if (isDark) ChatBubbleReceivedLight else ChatBubbleReceivedDark
+        ChatBubbleReceivedLight
     }
 
     val textColor = if (isCurrentUser) {

@@ -78,7 +78,7 @@ class ChatRepositoryImpl @Inject constructor(
             val token = authRepository.getBearerToken()
             if (token == null) return Result.failure(Exception("Not authenticated"))
 
-            apiService.updateTypingStatus(token, chatId, mapOf("isTyping" to isTyping))
+            apiService.updateTypingStatus(token, chatId, TypingStatusRequest(isTyping))
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)

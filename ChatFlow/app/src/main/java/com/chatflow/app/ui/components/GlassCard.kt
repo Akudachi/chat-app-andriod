@@ -18,12 +18,7 @@ fun GlassCard(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit
 ) {
-    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
-    val glassColor = if (isDark) {
-        Color.White.copy(alpha = 0.1f)
-    } else {
-        Color.White.copy(alpha = 0.7f)
-    }
+    val glassColor = Color.White.copy(alpha = 0.7f)
 
     Box(
         modifier = modifier

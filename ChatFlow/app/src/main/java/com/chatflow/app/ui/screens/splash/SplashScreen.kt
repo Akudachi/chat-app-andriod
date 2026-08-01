@@ -65,24 +65,14 @@ fun SplashScreen(
         )
     }
 
-    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
-    val backgroundColor = if (isDark) {
-        Brush.verticalGradient(
-            colors = listOf(
-                Color(0xFF1A1A2E),
-                Color(0xFF16213E)
-            )
+    val backgroundColor = Brush.verticalGradient(
+        colors = listOf(
+            Color(0xFFE3F2FD),
+            Color(0xFFFFFFFF)
         )
-    } else {
-        Brush.verticalGradient(
-            colors = listOf(
-                Color(0xFFE3F2FD),
-                Color(0xFFFFFFFF)
-            )
-        )
-    }
+    )
 
-    val accentColor = if (isDark) ChatBubbleSentDark else ChatBubbleSentLight
+    val accentColor = ChatBubbleSentLight
 
     Box(
         modifier = Modifier

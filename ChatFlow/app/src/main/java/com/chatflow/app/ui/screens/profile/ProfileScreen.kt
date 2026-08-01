@@ -32,6 +32,7 @@ import com.chatflow.app.ui.components.CircularLoadingIndicator
 import com.chatflow.app.ui.components.OnlineIndicator
 import com.chatflow.app.ui.components.ProfileAvatar
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfileScreen(
     onNavigateBack: () -> Unit,
@@ -74,7 +75,7 @@ fun ProfileScreen(
                         .padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Box {
+                    androidx.compose.foundation.layout.Box {
                         ProfileAvatar(
                             photoUrl = user!!.photoUrl,
                             name = user!!.name,

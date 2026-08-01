@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CameraAlt
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +35,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.chatflow.app.ui.components.CircularLoadingIndicator
 import com.chatflow.app.ui.components.ProfileAvatar
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditProfileScreen(
     onNavigateBack: () -> Unit,
@@ -129,8 +131,7 @@ fun EditProfileScreen(
                         modifier = Modifier.size(24.dp)
                     ) {
                         CircularLoadingIndicator(
-                            modifier = Modifier.matchParentSize(),
-                            color = MaterialTheme.colorScheme.onPrimary
+                            modifier = Modifier.matchParentSize()
                         )
                     }
                 } else {

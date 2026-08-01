@@ -87,7 +87,7 @@ interface ApiService {
     suspend fun uploadVoice(
         @Header("Authorization") token: String,
         @Part voice: okhttp3.MultipartBody.Part,
-        @Part duration: okhttp3.MultipartBody.Part
+        @Part duration: okhttp3.RequestBody
     ): UploadResponse
 }
 
