@@ -107,7 +107,7 @@ fun SplashScreen(
                 text = "ChatFlow",
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
-                color = if (isDark) Color.White else Color(0xFF1A1A2E)
+                color = Color.White
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -115,7 +115,7 @@ fun SplashScreen(
             Text(
                 text = "Connect. Chat. Share.",
                 style = MaterialTheme.typography.bodyLarge,
-                color = if (isDark) Color.White.copy(alpha = 0.7f) else Color(0xFF1A1A2E).copy(alpha = 0.7f)
+                color = Color.White.copy(alpha = 0.7f)
             )
 
             Spacer(modifier = Modifier.height(48.dp))

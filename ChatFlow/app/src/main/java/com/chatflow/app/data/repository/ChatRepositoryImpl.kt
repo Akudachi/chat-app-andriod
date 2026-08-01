@@ -3,6 +3,7 @@ package com.chatflow.app.data.repository
 import com.chatflow.app.data.api.ApiService
 import com.chatflow.app.data.api.RetrofitClient
 import com.chatflow.app.data.api.CreateChatRequest
+import com.chatflow.app.data.api.TypingStatusRequest
 import com.chatflow.app.data.model.ChatDto
 import com.chatflow.app.domain.model.Chat
 import com.chatflow.app.domain.repository.ChatRepository
