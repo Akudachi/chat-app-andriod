@@ -75,7 +75,7 @@ fun HomeScreen(
                             modifier = Modifier
                                 .size(40.dp)
                                 .padding(8.dp)
-                                .clickable { onNavigateToProfile(user.userId) },
+                                .clickable { onNavigateToProfile(user.id) },
                             size = 40
                         )
                     }
@@ -186,7 +186,7 @@ private fun ChatListItem(
                     modifier = Modifier.weight(1f)
                 )
 
-                val unreadCount = chat.unreadCount[currentUser?.userId] ?: 0
+                val unreadCount = chat.unreadCount[currentUser?.id] ?: 0
                 if (unreadCount > 0) {
                     Spacer(modifier = Modifier.size(8.dp))
                     UnreadBadge(count = unreadCount)

@@ -73,7 +73,7 @@ fun OnboardingScreen(
         Button(
             onClick = onNavigateToProfileSetup,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth(0.8f)
                 .height(56.dp)
         ) {
             Text("Get Started", style = MaterialTheme.typography.titleMedium)

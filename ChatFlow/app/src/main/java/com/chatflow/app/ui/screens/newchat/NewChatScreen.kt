@@ -1,6 +1,8 @@
 package com.chatflow.app.ui.screens.newchat
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -104,7 +106,7 @@ fun NewChatScreen(
                     items(users) { user ->
                         UserListItem(
                             user = user,
-                            onClick = { viewModel.createChat(user.userId) }
+                            onClick = { viewModel.createChat(user.id) }
                         )
                     }
                 }

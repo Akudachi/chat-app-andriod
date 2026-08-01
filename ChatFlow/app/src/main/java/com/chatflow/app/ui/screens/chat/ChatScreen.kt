@@ -112,18 +112,14 @@ fun ChatScreen(
                 items(messages) { message ->
                     val currentDate = DateUtils.getDateHeader(message.timestamp)
                     if (currentDate != lastDate) {
-                        item {
-                            DateSeparator(date = currentDate)
-                        }
+                        DateSeparator(date = currentDate)
                         lastDate = currentDate
                     }
-                    item {
-                        MessageBubble(
-                            message = message,
-                            isCurrentUser = message.senderId == currentUser?.userId,
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                        )
-                    }
+                    MessageBubble(
+                        message = message,
+                        isCurrentUser = message.senderId == currentUser?.id,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                    )
                 }
             }
 
@@ -167,7 +163,7 @@ private fun MessageBubble(
     isCurrentUser: Boolean,
     modifier: Modifier = Modifier
 ) {
-    val isDark = MaterialTheme.colorScheme.isLight
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val bubbleColor = if (isCurrentUser) {
         if (isDark) ChatBubbleSentLight else ChatBubbleSentDark
     } else {
