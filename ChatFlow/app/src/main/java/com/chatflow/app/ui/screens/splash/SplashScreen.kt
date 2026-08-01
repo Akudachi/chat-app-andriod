@@ -65,7 +65,7 @@ fun SplashScreen(
         )
     }
 
-    val isDark = MaterialTheme.colorScheme.isLight
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
     val backgroundColor = if (isDark) {
         Brush.verticalGradient(
             colors = listOf(

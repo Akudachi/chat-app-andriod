@@ -84,7 +84,10 @@ fun EditProfileScreen(
                 onClick = {
                     // TODO: Implement photo picker
                 },
-                modifier = Modifier.size(48.dp)
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(48.dp),
+                shape = CircleShape
             ) {
                 Icon(Icons.Default.CameraAlt, contentDescription = "Change Photo")
             }
@@ -122,10 +125,14 @@ fun EditProfileScreen(
                 enabled = !isLoading && name.isNotEmpty()
             ) {
                 if (isLoading) {
-                    CircularLoadingIndicator(
-                        modifier = Modifier.size(24.dp),
-                        color = MaterialTheme.colorScheme.onPrimary
-                    )
+                    androidx.compose.foundation.layout.Box(
+                        modifier = Modifier.size(24.dp)
+                    ) {
+                        CircularLoadingIndicator(
+                            modifier = Modifier.matchParentSize(),
+                            color = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
                 } else {
                     Text("Save Changes", style = MaterialTheme.typography.titleMedium)
                 }
